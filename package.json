@@ -1,6 +1,6 @@
 {
   "name": "slackme",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "API abstraction for mojoio",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
