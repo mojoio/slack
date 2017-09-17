@@ -1,5 +1,11 @@
 import * as plugins from './slackme.plugins'
 
+export interface IAttachmentField {
+  title: string
+  value: string
+  short?: boolean
+}
+
 export interface IMessageOptions {
   /**
    * "Required plain-text summary of the attachment."
@@ -13,26 +19,35 @@ export interface IMessageOptions {
    * a message to show above
    */
   pretext?: string,
-  "author_name"?: "Bobby Tables",
-  "author_link"?: "http://flickr.com/bobby/",
-  "author_icon"?: "http://flickr.com/icons/bobby.jpg",
-  "title"?: "Slack API Documentation",
-  "title_link"?: "https://api.slack.com/",
+  /**
+   * author name of the attachment
+   */
+  author_name?: string,
+  /**
+   * a link to the author
+   */
+  author_link?: string,
+  /**
+   * a string to the author
+   */
+  author_icon?: string,
+  /**
+   * a title for the attachment
+   */
+  title?: string,
+  /**
+   * a link for the title
+   */
+  title_link?: string,
   /**
    * the main text of the message
    */
   text?: string,
-  "fields"?: [
-    {
-      "title"?: "Priority",
-      "value"?: "High",
-      "short"?: false
-    }
-  ],
-  "image_url"?: "http://my-website.com/path/to/image.jpg",
-  "thumb_url"?: "http://example.com/path/to/thumb.png",
-  "footer"?: "Slack API",
-  "footer_icon"?: "https://platform.slack-edge.com/img/default_application_icon.png",
+  fields?: IAttachmentField[],
+  image_url?: string,
+  thumb_url?: string,
+  footer?: string,
+  footer_icon?: string,
   /**
    * timestamp as epoch time
    */
