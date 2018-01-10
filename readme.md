@@ -32,7 +32,7 @@ mySlackme.sendMessage:{{
 }, 'myAwesomeChannel'}
 ```
 
-The message interface looks like this:
+The message interface follows [Slack's docs (click here)](https://api.slack.com/docs/message-formatting) and looks like this:
 
 ```javascript
 interface IAttachmentField {
