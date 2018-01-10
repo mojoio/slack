@@ -93,7 +93,6 @@ interface IMessageOptions {
 Alternatively, there is the option of specifying a SlackMessage class
 
 ```javascript
-
 const mySlackMessage = new SlackMessage({ /* message options here } */, mySlackme)
 mySlackMessage.title = 'new Title' // modify message options
 mySlackMessage.sendToRoom('general')
