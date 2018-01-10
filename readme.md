@@ -14,9 +14,10 @@ API abstraction for mojoio
 [![Dependency Status](https://david-dm.org/mojoio/slackme.svg)](https://david-dm.org/mojoio/slackme)
 [![bitHound Dependencies](https://www.bithound.io/github/mojoio/slackme/badges/dependencies.svg)](https://www.bithound.io/github/mojoio/slackme/master/dependencies/npm)
 [![bitHound Code](https://www.bithound.io/github/mojoio/slackme/badges/code.svg)](https://www.bithound.io/github/mojoio/slackme)
+[![Known Vulnerabilities](https://snyk.io/test/npm/slackme/badge.svg)](https://snyk.io/test/npm/slackme)
 [![TypeScript](https://img.shields.io/badge/TypeScript-2.x-blue.svg)](https://nodejs.org/dist/latest-v6.x/docs/api/)
 [![node](https://img.shields.io/badge/node->=%206.x.x-blue.svg)](https://nodejs.org/dist/latest-v6.x/docs/api/)
-[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://standardjs.com/)
 
 ## Usage
 Use TypeScript for best in class instellisense.
