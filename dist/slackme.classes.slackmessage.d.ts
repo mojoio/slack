@@ -1,3 +1,4 @@
+import { Slackme } from './slackme.classes.slackme';
 export interface IAttachmentField {
     title: string;
     value: string;
@@ -51,6 +52,8 @@ export interface IMessageOptions {
     ts?: number;
 }
 export declare class SlackMessage {
+    slackmeRef: Slackme;
     messageOptions: IMessageOptions;
-    constructor(messageOptions: IMessageOptions);
+    constructor(messageOptionsArg: IMessageOptions, slackmeArg?: Slackme);
+    sendToRoom(roomNameArg: string): void;
 }

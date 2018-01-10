@@ -1,4 +1,5 @@
 import * as plugins from './slackme.plugins'
+import { Slackme } from './slackme.classes.slackme'
 
 export interface IAttachmentField {
   title: string
@@ -55,8 +56,17 @@ export interface IMessageOptions {
 }
 
 export class SlackMessage {
+  slackmeRef: Slackme
   messageOptions: IMessageOptions
-  constructor(messageOptions: IMessageOptions) {
-    this.messageOptions = messageOptions
+  constructor(messageOptionsArg: IMessageOptions, slackmeArg?: Slackme) {
+    if (slackmeArg) {
+      this.slackmeRef = slackmeArg
+    }
+    this.messageOptions = messageOptionsArg
+  }
+  sendToRoom(roomNameArg: string) {
+    if(this.slackmeRef) {
+      this.slackmeRef.sendMessage(this.messageOptions, roomNameArg)
+    }
   }
 }

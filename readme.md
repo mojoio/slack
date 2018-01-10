@@ -21,6 +21,85 @@ API abstraction for mojoio
 ## Usage
 Use TypeScript for best in class instellisense.
 
+```javascript
+import * as slackme from 'slackme'
+
+// First setup the hook
+const mySlackme = new Slackme('https://some.slack.webhook.url')
+mySlackme.sendMessage:{{
+  // MessageOptions here
+}, 'myAwesomeChannel'}
+```
+
+The message interface looks like this:
+
+```javascript
+interface IAttachmentField {
+  title: string
+  value: string
+  short?: boolean
+}
+
+interface IMessageOptions {
+  /**
+   * "Required plain-text summary of the attachment."
+   */
+  fallback?: string,
+  /**
+   * a side color
+   */
+  color?: string,
+  /**
+   * a message to show above
+   */
+  pretext?: string,
+  /**
+   * author name of the attachment
+   */
+  author_name?: string,
+  /**
+   * a link to the author
+   */
+  author_link?: string,
+  /**
+   * a string to the author
+   */
+  author_icon?: string,
+  /**
+   * a title for the attachment
+   */
+  title?: string,
+  /**
+   * a link for the title
+   */
+  title_link?: string,
+  /**
+   * the main text of the message
+   */
+  text?: string,
+  fields?: IAttachmentField[],
+  image_url?: string,
+  thumb_url?: string,
+  footer?: string,
+  footer_icon?: string,
+  /**
+   * timestamp as epoch time
+   */
+  ts?: number
+}
+```
+
+Alternatively, there is the option of specifying a SlackMessage class
+
+```javascript
+
+const mySlackMessage = new SlackMessage({ /* message options here } */, mySlackme)
+mySlackMessage.title = 'new Title' // modify message options
+mySlackMessage.sendToRoom('general')
+mySlackMessage.title = 'another Title'
+mySlackMessage.sendToRoom('anotherroom')
+```
+
 For further information read the linked docs at the top of this README.
 
 > MIT licensed | **&copy;** [Lossless GmbH](https://lossless.gmbh)
