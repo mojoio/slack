@@ -1,26 +1,25 @@
 {
-  "name": "slackme",
+  "name": "@pushrocks/slack",
   "version": "2.0.3",
+  "private": false,
   "description": "API abstraction for mojoio",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "author": "Lossless GmbH",
   "license": "MIT",
   "scripts": {
-    "test": "(npmts)"
+    "test": "tstest test/",
+    "build": "tsbuild"
   },
   "devDependencies": {
-    "@types/node": "^9.3.0",
-    "cz-conventional-changelog": "^2.1.0",
-    "qenv": "^1.1.7",
-    "tapbundle": "^1.0.13"
+    "@gitzone/tsbuild": "^2.0.22",
+    "@gitzone/tsrun": "^1.1.12",
+    "@gitzone/tstest": "^1.0.15",
+    "@pushrocks/qenv": "^2.0.2",
+    "@pushrocks/tapbundle": "^3.0.7",
+    "@types/node": "^10.9.4"
   },
   "dependencies": {
     "smartrequest": "^1.0.6"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }

@@ -1,2 +1,2 @@
-export * from './slackme.classes.slackme'
-export * from './slackme.classes.slackmessage'
+export * from './slack.classes.slackme';
+export * from './slack.classes.slackmessage';
