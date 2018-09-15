@@ -1,5 +1,5 @@
 {
-  "name": "@pushrocks/slack",
+  "name": "@mojoio/slack",
   "version": "2.0.4",
   "private": false,
   "description": "API abstraction for mojoio",
