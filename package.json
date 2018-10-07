@@ -17,9 +17,9 @@
     "@gitzone/tstest": "^1.0.15",
     "@pushrocks/qenv": "^2.0.2",
     "@pushrocks/tapbundle": "^3.0.7",
-    "@types/node": "^10.9.4"
+    "@types/node": "^10.11.4"
   },
   "dependencies": {
-    "smartrequest": "^1.0.6"
+    "@pushrocks/smartrequest": "^1.0.6"
   }
 }

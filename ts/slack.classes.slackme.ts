@@ -9,10 +9,7 @@ export class Slackme {
   }
 
   sendMessage(messageOptionsArg: IMessageOptions, channelArg: string = 'general') {
-    plugins.smartrequest.post(`${this.baseUrl}${this.postRoute}`, {
-      headers: {
-        'Content-Type': 'application/json'
-      },
+    plugins.smartrequest.postJson(`${this.baseUrl}${this.postRoute}`, {
       requestBody: {
         channel: channelArg,
         attachments: [messageOptionsArg]

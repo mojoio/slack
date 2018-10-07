@@ -1,3 +1,3 @@
-import * as smartrequest from 'smartrequest';
+import * as smartrequest from '@pushrocks/smartrequest';
 
 export { smartrequest };
