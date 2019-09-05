@@ -1,26 +1,20 @@
-# slackme
+# @mojoio/slack
+slack api abstraction for the mojo.io ecosystem
 
-API abstraction for mojoio
-
-## Availabililty
-
-[![npm](https://mojoio.gitlab.io/assets/repo-button-npm.svg)](https://www.npmjs.com/package/slackme)
-[![git](https://mojoio.gitlab.io/assets/repo-button-git.svg)](https://GitLab.com/mojoio/slackme)
-[![git](https://mojoio.gitlab.io/assets/repo-button-mirror.svg)](https://github.com/mojoio/slackme)
-[![docs](https://mojoio.gitlab.io/assets/repo-button-docs.svg)](https://mojoio.gitlab.io/slackme/)
+## Availabililty and Links
+* [npmjs.org (npm package)](https://www.npmjs.com/package/@mojoio/slack)
+* [gitlab.com (source)](https://gitlab.com/mojoio/slack)
+* [github.com (source mirror)](https://github.com/mojoio/slack)
+* [docs (typedoc)](https://mojoio.gitlab.io/slack/)
 
 ## Status for master
-
-[![build status](https://GitLab.com/mojoio/slackme/badges/master/build.svg)](https://GitLab.com/mojoio/slackme/commits/master)
-[![coverage report](https://GitLab.com/mojoio/slackme/badges/master/coverage.svg)](https://GitLab.com/mojoio/slackme/commits/master)
-[![npm downloads per month](https://img.shields.io/npm/dm/slackme.svg)](https://www.npmjs.com/package/slackme)
-[![Dependency Status](https://david-dm.org/mojoio/slackme.svg)](https://david-dm.org/mojoio/slackme)
-[![bitHound Dependencies](https://www.bithound.io/github/mojoio/slackme/badges/dependencies.svg)](https://www.bithound.io/github/mojoio/slackme/master/dependencies/npm)
-[![bitHound Code](https://www.bithound.io/github/mojoio/slackme/badges/code.svg)](https://www.bithound.io/github/mojoio/slackme)
-[![Known Vulnerabilities](https://snyk.io/test/npm/slackme/badge.svg)](https://snyk.io/test/npm/slackme)
-[![TypeScript](https://img.shields.io/badge/TypeScript-2.x-blue.svg)](https://nodejs.org/dist/latest-v6.x/docs/api/)
-[![node](https://img.shields.io/badge/node->=%206.x.x-blue.svg)](https://nodejs.org/dist/latest-v6.x/docs/api/)
-[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://standardjs.com/)
+[![build status](https://gitlab.com/mojoio/slack/badges/master/build.svg)](https://gitlab.com/mojoio/slack/commits/master)
+[![coverage report](https://gitlab.com/mojoio/slack/badges/master/coverage.svg)](https://gitlab.com/mojoio/slack/commits/master)
+[![npm downloads per month](https://img.shields.io/npm/dm/@mojoio/slack.svg)](https://www.npmjs.com/package/@mojoio/slack)
+[![Known Vulnerabilities](https://snyk.io/test/npm/@mojoio/slack/badge.svg)](https://snyk.io/test/npm/@mojoio/slack)
+[![TypeScript](https://img.shields.io/badge/TypeScript->=%203.x-blue.svg)](https://nodejs.org/dist/latest-v10.x/docs/api/)
+[![node](https://img.shields.io/badge/node->=%2010.x.x-blue.svg)](https://nodejs.org/dist/latest-v10.x/docs/api/)
+[![JavaScript Style Guide](https://img.shields.io/badge/code%20style-prettier-ff69b4.svg)](https://prettier.io/)
 
 ## Usage
 
@@ -104,9 +98,9 @@ mySlackMessage.title = 'another Title'
 mySlackMessage.sendToRoom('anotherroom')
 ```
 
-For further information read the linked docs at the top of this README.
+For further information read the linked docs at the top of this readme.
 
 > MIT licensed | **&copy;** [Lossless GmbH](https://lossless.gmbh)
-> | By using this npm module you agree to our [privacy policy](https://lossless.gmbH/privacy.html)
+| By using this npm module you agree to our [privacy policy](https://lossless.gmbH/privacy.html)
 
-[![repo-footer](https://mojoio.gitlab.io/assets/repo-footer.svg)](https://mojo.io)
+[![repo-footer](https://mojoio.gitlab.io/assets/repo-footer.svg)](https://maintainedby.lossless.com)

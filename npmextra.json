@@ -2,5 +2,15 @@
   "npmci": {
     "npmGlobalTools": [],
     "npmAccessLevel": "public"
+  },
+  "gitzone": {
+    "module": {
+      "githost": "gitlab.com",
+      "gitscope": "mojoio",
+      "gitrepo": "slack",
+      "shortDescription": "slack api abstraction for the mojo.io ecosystem",
+      "npmPackagename": "@mojoio/slack",
+      "license": "MIT"
+    }
   }
 }

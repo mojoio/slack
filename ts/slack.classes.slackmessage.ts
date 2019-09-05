@@ -64,9 +64,11 @@ export class SlackMessage {
     }
     this.messageOptions = messageOptionsArg;
   }
-  sendToRoom(roomNameArg: string) {
+  async sendToRoom(roomNameArg: string) {
     if (this.slackmeRef) {
-      this.slackmeRef.sendMessage(this.messageOptions, roomNameArg);
+      await this.slackmeRef.sendMessage(this.messageOptions, roomNameArg);
+    } else {
+      throw new Error('you need to set a slackRef before sending the message!');
     }
   }
 }

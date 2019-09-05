@@ -8,8 +8,8 @@ export class Slackme {
     this.postRoute = postRouteArg;
   }
 
-  sendMessage(messageOptionsArg: IMessageOptions, channelArg: string = 'general') {
-    plugins.smartrequest.postJson(`${this.baseUrl}${this.postRoute}`, {
+  async sendMessage(messageOptionsArg: IMessageOptions, channelArg: string = 'general') {
+    await plugins.smartrequest.postJson(`${this.baseUrl}${this.postRoute}`, {
       requestBody: {
         channel: channelArg,
         attachments: [messageOptionsArg]

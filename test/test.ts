@@ -9,34 +9,54 @@ let testSlackme: slackme.Slackme;
 let testSlackMessage: slackme.SlackMessage;
 
 tap.test('should create a valid slackme instance', async () => {
-  testSlackme = new slackme.Slackme(process.env.SLACK_TOKEN);
+  testSlackme = new slackme.Slackme(testQenv.getEnvVarOnDemand('SLACK_TOKEN'));
 });
 
 tap.test('should send a message to Slack', async () => {
-  testSlackMessage = new slackme.SlackMessage(
-    {
-      author_name: 'GitLab CI',
-      author_link: 'https://gitlab.com/',
-      pretext: '*Good News*: Build successfull!',
-      color: '#3cb371',
-      fields: [
-        {
-          title: 'Branch',
-          value: 'Lossless Cloud',
-          short: true
-        },
-        {
-          title: 'Product ID',
-          value: 'pushrocks',
-          short: true
-        }
-      ],
-      ts: new Date().getTime() / 1000
-    },
-    testSlackme
-  );
-  testSlackme.sendMessage(testSlackMessage.messageOptions, 'random');
-  testSlackMessage.sendToRoom('random');
+  testSlackMessage = new slackme.SlackMessage({
+    author_name: 'GitLab CI',
+    author_link: 'https://gitlab.com/',
+    pretext: '*Good News*: Build successfull!',
+    color: '#3cb371',
+    fields: [
+      {
+        title: 'Branch',
+        value: 'Lossless Cloud',
+        short: true
+      },
+      {
+        title: 'Product ID',
+        value: 'pushrocks',
+        short: true
+      }
+    ],
+    ts: new Date().getTime() / 1000
+  });
+  await testSlackme.sendMessage(testSlackMessage.messageOptions, 'random');
+  await expect(testSlackMessage.sendToRoom('random')).to.eventually.be.rejected;
+});
+
+tap.test('should send a message to Slack by directly calling the message', async () => {
+  testSlackMessage = new slackme.SlackMessage({
+    author_name: 'GitLab CI',
+    author_link: 'https://gitlab.com/',
+    pretext: '*Good News*: Build successfull!',
+    color: '#3cb371',
+    fields: [
+      {
+        title: 'Branch',
+        value: 'Lossless Cloud',
+        short: true
+      },
+      {
+        title: 'Product ID',
+        value: 'pushrocks',
+        short: true
+      }
+    ],
+    ts: new Date().getTime() / 1000
+  }, testSlackme);
+  await testSlackMessage.sendToRoom('random');
 });
 
 tap.start();

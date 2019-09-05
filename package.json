@@ -2,7 +2,7 @@
   "name": "@mojoio/slack",
   "version": "2.0.6",
   "private": false,
-  "description": "API abstraction for mojoio",
+  "description": "slack api abstraction for the mojo.io ecosystem",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "author": "Lossless GmbH",
@@ -12,14 +12,24 @@
     "build": "tsbuild"
   },
   "devDependencies": {
-    "@gitzone/tsbuild": "^2.0.22",
-    "@gitzone/tsrun": "^1.1.12",
-    "@gitzone/tstest": "^1.0.15",
-    "@pushrocks/qenv": "^2.0.2",
-    "@pushrocks/tapbundle": "^3.0.7",
-    "@types/node": "^10.11.4"
+    "@gitzone/tsbuild": "^2.1.17",
+    "@gitzone/tsrun": "^1.2.8",
+    "@gitzone/tstest": "^1.0.24",
+    "@pushrocks/qenv": "^4.0.4",
+    "@pushrocks/tapbundle": "^3.0.13",
+    "@types/node": "^12.7.4"
   },
   "dependencies": {
-    "@pushrocks/smartrequest": "^1.0.6"
-  }
+    "@pushrocks/smartrequest": "^1.1.23"
+  },
+  "files": [
+    "ts/*",
+    "ts_web/*",
+    "dist/*",
+    "dist_web/*",
+    "assets/*",
+    "cli.js",
+    "npmextra.json",
+    "readme.md"
+  ]
 }

@@ -1,2 +1,2 @@
-vars:
+required:
   - SLACK_TOKEN
