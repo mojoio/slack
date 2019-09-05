@@ -1,6 +1,6 @@
 {
   "name": "@mojoio/slack",
-  "version": "2.0.7",
+  "version": "2.0.8",
   "private": false,
   "description": "slack api abstraction for the mojo.io ecosystem",
   "main": "dist/index.js",
