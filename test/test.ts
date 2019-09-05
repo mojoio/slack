@@ -37,25 +37,28 @@ tap.test('should send a message to Slack', async () => {
 });
 
 tap.test('should send a message to Slack by directly calling the message', async () => {
-  testSlackMessage = new slackme.SlackMessage({
-    author_name: 'GitLab CI',
-    author_link: 'https://gitlab.com/',
-    pretext: '*Good News*: Build successfull!',
-    color: '#3cb371',
-    fields: [
-      {
-        title: 'Branch',
-        value: 'Lossless Cloud',
-        short: true
-      },
-      {
-        title: 'Product ID',
-        value: 'pushrocks',
-        short: true
-      }
-    ],
-    ts: new Date().getTime() / 1000
-  }, testSlackme);
+  testSlackMessage = new slackme.SlackMessage(
+    {
+      author_name: 'GitLab CI',
+      author_link: 'https://gitlab.com/',
+      pretext: '*Good News*: Build successfull!',
+      color: '#3cb371',
+      fields: [
+        {
+          title: 'Branch',
+          value: 'Lossless Cloud',
+          short: true
+        },
+        {
+          title: 'Product ID',
+          value: 'pushrocks',
+          short: true
+        }
+      ],
+      ts: new Date().getTime() / 1000
+    },
+    testSlackme
+  );
   await testSlackMessage.sendToRoom('random');
 });
 
