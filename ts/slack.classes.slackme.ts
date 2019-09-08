@@ -9,11 +9,12 @@ export class Slackme {
   }
 
   async sendMessage(messageOptionsArg: IMessageOptions, channelArg: string = 'general') {
-    await plugins.smartrequest.postJson(`${this.baseUrl}${this.postRoute}`, {
+    const response = await plugins.smartrequest.postJson(`${this.baseUrl}${this.postRoute}`, {
       requestBody: {
         channel: channelArg,
         attachments: [messageOptionsArg]
       }
     });
+    return response;
   }
 }
