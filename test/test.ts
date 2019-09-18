@@ -57,7 +57,7 @@ tap.test('should send a message to Slack by directly calling the message', async
     testSlackme
   );
   await testSlackMessage.sendToRoom('random');
-  await tools.delayFor(5000);
+  await tools.delayFor(1000);
   await testSlackMessage.updateAndSend({
     author_name: 'GitLab CI',
     author_link: 'https://gitlab.com/',
