@@ -55,8 +55,6 @@ export class SlackAccount {
         break;
     }
 
-    console.log(requestBody);
-
     const response = await plugins.smartrequest.postJson(postUrl, {
       headers: {
         Authorization: `Bearer ${this.slackToken}`
