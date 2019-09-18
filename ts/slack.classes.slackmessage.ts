@@ -1,5 +1,5 @@
 import * as plugins from './slack.plugins';
-import { Slackme } from './slack.classes.slackme';
+import { SlackAccount } from './slack.classes.slackme';
 
 export interface IAttachmentField {
   title: string;
@@ -53,11 +53,11 @@ export interface IMessageOptions {
 }
 
 export class SlackMessage {
-  slackmeRef: Slackme;
+  slackmeRef: SlackAccount;
   messageOptions: IMessageOptions;
   channel: string;
   ts: string;
-  constructor(messageOptionsArg: IMessageOptions, slackmeArg?: Slackme) {
+  constructor(messageOptionsArg: IMessageOptions, slackmeArg?: SlackAccount) {
     if (slackmeArg) {
       this.slackmeRef = slackmeArg;
     }

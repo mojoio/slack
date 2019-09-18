@@ -5,11 +5,11 @@ let testQenv = new Qenv(process.cwd(), process.cwd() + '/.nogit');
 
 import * as slackme from '../ts/index';
 
-let testSlackme: slackme.Slackme;
+let testSlackme: slackme.SlackAccount;
 let testSlackMessage: slackme.SlackMessage;
 
 tap.test('should create a valid slackme instance', async (tools) => {
-  testSlackme = new slackme.Slackme(testQenv.getEnvVarOnDemand('SLACK_TOKEN'));
+  testSlackme = new slackme.SlackAccount(testQenv.getEnvVarOnDemand('SLACK_TOKEN'));
 });
 
 tap.test('should send a message to Slack', async (tools) => {

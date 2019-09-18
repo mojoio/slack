@@ -1,7 +1,7 @@
 import * as plugins from './slack.plugins';
 import { IMessageOptions } from './slack.classes.slackmessage';
 
-export class Slackme {
+export class SlackAccount {
   private postUrl = 'https://slack.com/api/chat.postMessage';
   private updateUrl = 'https://slack.com/api/chat.update';
   private slackToken: string;
