@@ -31,7 +31,11 @@ tap.test('should send a message to Slack', async (tools) => {
       }
     ]
   });
-  await testSlackme.sendMessage(testSlackMessage.messageOptions, 'random');
+  await testSlackme.sendMessage({
+    channelArg: 'random',
+    messageOptionsArg: testSlackMessage.messageOptions,
+    mode: 'new'
+  });
 });
 
 tap.test('should send a message to Slack by directly calling the message', async (tools) => {
@@ -60,6 +64,42 @@ tap.test('should send a message to Slack by directly calling the message', async
   await tools.delayFor(1000);
   await testSlackMessage.updateAndSend({
     author_name: 'GitLab CI',
+    author_link: 'https://gitlab.com/',
+    pretext: '*Good News*: Build successfull!',
+    color: '#3cb371',
+    fields: [
+      {
+        title: 'Branch',
+        value: 'Lossless Studio',
+        short: true
+      },
+      {
+        title: 'Product ID',
+        value: 'pushrocks',
+        short: true
+      }
+    ]
+  });
+  await testSlackMessage.updateAndSend({
+    author_name: 'GitLab CI',
+    author_link: 'https://gitlab.com/',
+    pretext: '*Good News*: Build successfull!',
+    color: '#3cb371',
+    fields: [
+      {
+        title: 'Branch',
+        value: 'Lossless Studio',
+        short: true
+      },
+      {
+        title: 'Product ID',
+        value: 'onboard.me',
+        short: true
+      }
+    ]
+  });
+  await testSlackMessage.startThread({
+    author_name: 'Lossless Compliance',
     author_link: 'https://gitlab.com/',
     pretext: '*Good News*: Build successfull!',
     color: '#3cb371',

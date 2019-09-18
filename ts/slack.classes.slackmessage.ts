@@ -1,5 +1,5 @@
 import * as plugins from './slack.plugins';
-import { SlackAccount } from './slack.classes.slackme';
+import { SlackAccount } from './slack.classes.slackaccount';
 
 export interface IAttachmentField {
   title: string;
@@ -66,13 +66,23 @@ export class SlackMessage {
 
   async updateAndSend(messageOptionsArg: IMessageOptions) {
     this.messageOptions = messageOptionsArg;
-    await this.sendToRoom(this.channel);
+    await this.sendToRoom(this.channel, 'update');
   }
 
-  async sendToRoom(roomNameArg: string) {
-    this.channel = roomNameArg;
+  async startThread(messageOptionsArg: IMessageOptions) {
+    this.messageOptions = messageOptionsArg;
+    this.sendToRoom(this.channel, 'threaded')
+  }
+
+  async sendToRoom(channelNameArg: string, modeArg: 'new' | 'update' | 'threaded' = 'new') {
+    this.channel = channelNameArg;
     if (this.slackmeRef) {
-      const response = await this.slackmeRef.sendMessage(this.messageOptions, roomNameArg, this.ts);
+      const response = await this.slackmeRef.sendMessage({
+        channelArg: this.channel,
+        messageOptionsArg: this.messageOptions,
+        mode: modeArg,
+        ts: this.ts
+      });
       this.ts = response.body.message.ts;
       this.channel = response.body.channel;
     } else {
