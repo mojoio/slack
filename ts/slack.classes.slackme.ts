@@ -22,14 +22,12 @@ export class Slackme {
       }
       postUrl = this.updateUrl;
     }
-    console.log(requestBody);
     const response = await plugins.smartrequest.postJson(postUrl, {
       headers: {
         'Authorization': `Bearer ${this.slackToken}`
       },
       requestBody
     });
-    console.log(response.body);
     return response;
   }
 }
