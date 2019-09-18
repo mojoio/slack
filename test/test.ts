@@ -5,15 +5,15 @@ let testQenv = new Qenv(process.cwd(), process.cwd() + '/.nogit');
 
 import * as slackme from '../ts/index';
 
-let testSlackme: slackme.SlackAccount;
+let testSlackAccount: slackme.SlackAccount;
 let testSlackMessage: slackme.SlackMessage;
 
 tap.test('should create a valid slackme instance', async (tools) => {
-  testSlackme = new slackme.SlackAccount(testQenv.getEnvVarOnDemand('SLACK_TOKEN'));
+  testSlackAccount = new slackme.SlackAccount(testQenv.getEnvVarOnDemand('SLACK_TOKEN'));
 });
 
 tap.test('should send a message to Slack', async (tools) => {
-  testSlackMessage = new slackme.SlackMessage({
+  const messageOptions = {
     author_name: 'GitLab CI',
     author_link: 'https://gitlab.com/',
     pretext: '*Good News*: Build successfull!',
@@ -30,16 +30,17 @@ tap.test('should send a message to Slack', async (tools) => {
         short: true
       }
     ]
-  });
-  await testSlackme.sendMessage({
+  };
+  await testSlackAccount.sendMessage({
     channelArg: 'random',
-    messageOptionsArg: testSlackMessage.messageOptions,
+    messageOptions: messageOptions,
     mode: 'new'
   });
 });
 
 tap.test('should send a message to Slack by directly calling the message', async (tools) => {
   testSlackMessage = new slackme.SlackMessage(
+    testSlackAccount,
     {
       author_name: 'GitLab CI',
       author_link: 'https://gitlab.com/',
@@ -57,8 +58,7 @@ tap.test('should send a message to Slack by directly calling the message', async
           short: true
         }
       ]
-    },
-    testSlackme
+    }
   );
   await testSlackMessage.sendToRoom('random');
   await tools.delayFor(1000);
@@ -117,5 +117,19 @@ tap.test('should send a message to Slack by directly calling the message', async
     ]
   })
 });
+
+tap.test('should send logs', async () => {
+  const slackLog = new slackme.SlackLog({
+    slackAccount: testSlackAccount,
+    channelName: 'random'
+  })
+  for (let i = 0; i < 30; i++) {
+    await slackLog.sendLogLine('hi there');
+    await slackLog.sendLogLine('so awesome');
+    await slackLog.sendLogLine('really');
+  }
+  
+  
+})
 
 tap.start();

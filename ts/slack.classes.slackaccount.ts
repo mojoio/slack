@@ -10,15 +10,32 @@ export class SlackAccount {
   }
 
   async sendMessage(optionsArg: {
-    messageOptionsArg: IMessageOptions;
+    messageOptions: IMessageOptions;
     channelArg: string;
     ts?: string;
     mode: 'new' | 'threaded' | 'update';
   }) {
+
     let requestBody: any = {
       channel: optionsArg.channelArg,
-      attachments: [optionsArg.messageOptionsArg]
+      text: optionsArg.messageOptions.text,
     };
+
+    if (optionsArg.messageOptions.fields) {
+      requestBody = {
+        ...requestBody,
+        attachments: [{
+          pretext: optionsArg.messageOptions.pretext,
+          fields: optionsArg.messageOptions.fields,
+          ts: optionsArg.messageOptions.ts,
+          color: optionsArg.messageOptions.color
+        }]
+      }
+    }
+
+
+
+
     let postUrl = this.postUrl;
 
     switch (true) {
@@ -35,7 +52,11 @@ export class SlackAccount {
           thread_ts: optionsArg.ts
 
         }
+        break;
     }
+
+    console.log(requestBody);
+
     const response = await plugins.smartrequest.postJson(postUrl, {
       headers: {
         Authorization: `Bearer ${this.slackToken}`

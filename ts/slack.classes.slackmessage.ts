@@ -53,15 +53,19 @@ export interface IMessageOptions {
 }
 
 export class SlackMessage {
-  slackmeRef: SlackAccount;
-  messageOptions: IMessageOptions;
-  channel: string;
-  ts: string;
-  constructor(messageOptionsArg: IMessageOptions, slackmeArg?: SlackAccount) {
-    if (slackmeArg) {
-      this.slackmeRef = slackmeArg;
+  public slackAccountRef: SlackAccount;
+  public messageOptions: IMessageOptions;
+  public channel: string;
+  public ts: string;
+
+  public requestRunning = plugins.smartpromise.defer();
+
+  constructor(slackAccountArg: SlackAccount, messageOptionsArg: IMessageOptions) {
+    if (slackAccountArg) {
+      this.slackAccountRef = slackAccountArg;
     }
     this.messageOptions = messageOptionsArg;
+    this.requestRunning.resolve();
   }
 
   async updateAndSend(messageOptionsArg: IMessageOptions) {
@@ -76,15 +80,17 @@ export class SlackMessage {
 
   async sendToRoom(channelNameArg: string, modeArg: 'new' | 'update' | 'threaded' = 'new') {
     this.channel = channelNameArg;
-    if (this.slackmeRef) {
-      const response = await this.slackmeRef.sendMessage({
+    if (this.slackAccountRef) {
+      const response = await this.slackAccountRef.sendMessage({
         channelArg: this.channel,
-        messageOptionsArg: this.messageOptions,
+        messageOptions: this.messageOptions,
         mode: modeArg,
         ts: this.ts
       });
-      this.ts = response.body.message.ts;
-      this.channel = response.body.channel;
+      if (modeArg === 'new') {
+        this.ts = response.body.message.ts;
+        this.channel = response.body.channel;
+      }
     } else {
       throw new Error('you need to set a slackRef before sending the message!');
     }
