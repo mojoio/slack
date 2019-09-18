@@ -15,26 +15,24 @@ export class SlackAccount {
     ts?: string;
     mode: 'new' | 'threaded' | 'update';
   }) {
-
     let requestBody: any = {
       channel: optionsArg.channelArg,
-      text: optionsArg.messageOptions.text,
+      text: optionsArg.messageOptions.text
     };
 
     if (optionsArg.messageOptions.fields) {
       requestBody = {
         ...requestBody,
-        attachments: [{
-          pretext: optionsArg.messageOptions.pretext,
-          fields: optionsArg.messageOptions.fields,
-          ts: optionsArg.messageOptions.ts,
-          color: optionsArg.messageOptions.color
-        }]
-      }
+        attachments: [
+          {
+            pretext: optionsArg.messageOptions.pretext,
+            fields: optionsArg.messageOptions.fields,
+            ts: optionsArg.messageOptions.ts,
+            color: optionsArg.messageOptions.color
+          }
+        ]
+      };
     }
-
-
-
 
     let postUrl = this.postUrl;
 
@@ -50,8 +48,7 @@ export class SlackAccount {
         requestBody = {
           ...requestBody,
           thread_ts: optionsArg.ts
-
-        }
+        };
         break;
     }
 

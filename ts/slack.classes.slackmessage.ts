@@ -75,7 +75,7 @@ export class SlackMessage {
 
   async startThread(messageOptionsArg: IMessageOptions) {
     this.messageOptions = messageOptionsArg;
-    this.sendToRoom(this.channel, 'threaded')
+    this.sendToRoom(this.channel, 'threaded');
   }
 
   async sendToRoom(channelNameArg: string, modeArg: 'new' | 'update' | 'threaded' = 'new') {

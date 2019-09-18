@@ -17,7 +17,9 @@
     "@gitzone/tstest": "^1.0.24",
     "@pushrocks/qenv": "^4.0.4",
     "@pushrocks/tapbundle": "^3.0.13",
-    "@types/node": "^12.7.4"
+    "@types/node": "^12.7.4",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0"
   },
   "dependencies": {
     "@pushrocks/smartpromise": "^3.0.5",

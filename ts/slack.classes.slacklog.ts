@@ -1,5 +1,5 @@
-import { SlackAccount } from "./slack.classes.slackaccount";
-import { SlackMessage } from "./slack.classes.slackmessage";
+import { SlackAccount } from './slack.classes.slackaccount';
+import { SlackMessage } from './slack.classes.slackmessage';
 
 export class SlackLog {
   public slackAccount: SlackAccount;
@@ -8,10 +8,7 @@ export class SlackLog {
 
   public completeLog = ``;
 
-  constructor(optionsArg: {
-    slackAccount: SlackAccount;
-    channelName: string;
-  }) {
+  constructor(optionsArg: { slackAccount: SlackAccount; channelName: string }) {
     this.slackAccount = optionsArg.slackAccount;
     this.channelName = optionsArg.channelName;
   }
@@ -23,10 +20,10 @@ export class SlackLog {
       await this.slackMessage.sendToRoom(this.channelName);
     }
     const date = new Date();
-    this.completeLog += `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} - ` + logText + '\n';
+    this.completeLog +=
+      `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()} - ` + logText + '\n';
     await this.slackMessage.updateAndSend({
-      text: '```\n' + this.completeLog + '\n```' 
-    })
+      text: '```\n' + this.completeLog + '\n```'
+    });
   }
-
-};
+}
