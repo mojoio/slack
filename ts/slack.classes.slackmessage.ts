@@ -49,24 +49,32 @@ export interface IMessageOptions {
   thumb_url?: string;
   footer?: string;
   footer_icon?: string;
-  /**
-   * timestamp as epoch time
-   */
   ts?: number;
 }
 
 export class SlackMessage {
   slackmeRef: Slackme;
   messageOptions: IMessageOptions;
+  channel: string;
+  ts: string;
   constructor(messageOptionsArg: IMessageOptions, slackmeArg?: Slackme) {
     if (slackmeArg) {
       this.slackmeRef = slackmeArg;
     }
     this.messageOptions = messageOptionsArg;
   }
+
+  async updateAndSend(messageOptionsArg: IMessageOptions) {
+    this.messageOptions = messageOptionsArg;
+    await this.sendToRoom(this.channel);
+  }
+
   async sendToRoom(roomNameArg: string) {
+    this.channel = roomNameArg;
     if (this.slackmeRef) {
-      await this.slackmeRef.sendMessage(this.messageOptions, roomNameArg);
+      const response = await this.slackmeRef.sendMessage(this.messageOptions, roomNameArg, this.ts);
+      this.ts = response.body.message.ts;
+      this.channel = response.body.channel;
     } else {
       throw new Error('you need to set a slackRef before sending the message!');
     }
